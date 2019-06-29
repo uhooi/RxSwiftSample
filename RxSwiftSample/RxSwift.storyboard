@@ -49,6 +49,14 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="ログイン(通常版へ！)"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="moveBeforeView:" destination="bBi-W6-XLA" eventType="touchUpInside" id="HCZ-11-sHr"/>
                                 </connections>
@@ -82,7 +90,7 @@
                     <connections>
                         <outlet property="idTextField" destination="Oo7-bo-72l" id="RGz-nj-qfQ"/>
                         <outlet property="loginButton" destination="FhL-yw-jGQ" id="LA2-eD-dpq"/>
-                        <outlet property="passTextField" destination="yE4-Eb-5Ef" id="YUr-9D-VHu"/>
+                        <outlet property="passwordTextField" destination="yE4-Eb-5Ef" id="21g-sJ-qdI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jq7-Zn-upH" userLabel="First Responder" sceneMemberID="firstResponder"/>
