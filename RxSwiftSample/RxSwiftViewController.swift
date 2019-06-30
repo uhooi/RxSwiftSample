@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxOptional
 
 final class RxSwiftViewController: UIViewController {
     
@@ -78,12 +79,12 @@ final class RxSwiftViewController: UIViewController {
     
     private func observeTextFields() {
         _ = Observable.combineLatest(
-            self.idTextField.rx.text.asObservable(),
-            self.passwordTextField.rx.text.asObservable()
+            self.idTextField.rx.text.asObservable().filterNil(),
+            self.passwordTextField.rx.text.asObservable().filterNil()
             )
             .takeUntil(self.rx.deallocating)
             .map { (id, password) -> Bool in
-                id?.isEmpty == false && password?.isEmpty == false
+                !id.isEmpty && !password.isEmpty
             }
             .subscribe(onNext: { isEnabled in
                 self.switchLoginButton(isEnabled: isEnabled)
