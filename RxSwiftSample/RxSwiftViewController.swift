@@ -82,8 +82,8 @@ final class RxSwiftViewController: UIViewController {
             self.passwordTextField.rx.text.asObservable()
             )
             .takeUntil(self.rx.deallocating)
-            .map { (id, pass) -> Bool in
-                id?.isEmpty == false && pass?.isEmpty == false
+            .map { (id, password) -> Bool in
+                id?.isEmpty == false && password?.isEmpty == false
             }
             .subscribe(onNext: { isEnabled in
                 self.switchLoginButton(isEnabled: isEnabled)
