@@ -24,12 +24,6 @@ final class RxSwiftViewController: UIViewController {
     @IBOutlet private weak var idTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-    // MARK: IBActions
-    
-    @IBAction private func moveBeforeView(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
-    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
@@ -37,6 +31,7 @@ final class RxSwiftViewController: UIViewController {
         
         configureView()
         observeTextFields()
+        observeLoginButton()
     }
     
     // MARK: Private Methods
@@ -88,6 +83,15 @@ final class RxSwiftViewController: UIViewController {
             }
             .subscribe(onNext: { isEnabled in
                 self.switchLoginButton(isEnabled: isEnabled)
+            })
+    }
+    
+    private func observeLoginButton() {
+        _ = self.loginButton.rx
+            .controlEvent(.touchUpInside)
+            .takeUntil(self.rx.deallocating)
+            .subscribe(onNext: { _ in
+                self.dismiss(animated: true)
             })
     }
     
